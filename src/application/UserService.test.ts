@@ -1,3 +1,4 @@
+import { User } from "../domain/Entity/User/User";
 import { FakeUserRepository } from "../infrastructure/repository/FakeUserRepository";
 import { UserService } from "./UserService";
 
@@ -20,5 +21,15 @@ describe("UserService", () => {
     expect(user).not.toBeNull();
     expect(user?.getId()).toBe("1");
     expect(user?.getName()).toBe("John Doe");
+  });
+
+  it("deve salvar um novo usuário com sucesso e buscando novamente", async () => {
+    const newUser: User = new User("3", "Test User");
+
+    await userService.saveUser(newUser);
+    const savedUser = await userService.findUserById("3");
+    expect(savedUser).not.toBeNull();
+    expect(savedUser?.getId()).toBe("3");
+    expect(savedUser?.getName()).toBe("Test User");
   });
 });

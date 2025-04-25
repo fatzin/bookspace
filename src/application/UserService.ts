@@ -1,8 +1,8 @@
 import { User } from "../domain/Entity/User/User";
-import { FakeUserRepository } from "../infrastructure/repository/FakeUserRepository";
+import { UserRepository } from "./../domain/Repository/UserRepository";
 
 export class UserService {
-  constructor(private userRepository: FakeUserRepository) {}
+  constructor(private userRepository: UserRepository) {}
 
   async findUserById(id: string): Promise<User | null> {
     return this.userRepository.findById(id);
