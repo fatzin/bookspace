@@ -1,5 +1,5 @@
-import { User } from "../domain/Entity/User/User";
-import { FakeUserRepository } from "../infrastructure/repository/FakeUserRepository";
+import { User } from "../../domain/Entity/User/User";
+import { FakeUserRepository } from "../../infrastructure/repository/FakeUserRepository";
 import { UserService } from "./UserService";
 
 describe("UserService", () => {

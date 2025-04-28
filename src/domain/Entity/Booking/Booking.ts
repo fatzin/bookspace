@@ -9,6 +9,7 @@ export class Booking {
   private readonly user: User;
   private readonly dateRange: DateRange;
   private readonly guestCount: number;
+  private readonly guest: User;
   private status: "CONFIRMED" | "CANCELED" | "PENDING" = "CONFIRMED";
   private totalPrice: number = 0;
 
@@ -44,6 +45,7 @@ export class Booking {
     this.id = id;
     this.property = property;
     this.user = user;
+    this.guest = user;
     this.dateRange = dateRange;
     this.guestCount = guestCount;
     this.totalPrice = property.calculateTotalPrice(dateRange);
@@ -62,6 +64,10 @@ export class Booking {
 
   getUser(): User {
     return this.user;
+  }
+
+  getGuest(): User {
+    return this.guest;
   }
 
   getDateRange(): DateRange {
